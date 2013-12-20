@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	 <ui:define name="content">
+        
+   <h:form>
+    
+     <rich:dataTable id="table" value="#{sandwichBean.allSandwiches}" var="item" 
+     styleClass="table" headerClass="header">
+     <f:facet name="header">#{msg.sandwichAllLabel}</f:facet>
+      
+      <h:column>
+        <f:facet name="header">#{msg.sandwichIdLabel}</f:facet>
+        #{item.id}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.sandwichNameLabel}</f:facet>
+        #{item.name}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.sandwichAmountLabel}</f:facet>
+        #{item.amount}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.sandwichProductionDateLabel}</f:facet>
+         <h:outputText value="#{item.productionDate}">
+              <f:convertDateTime pattern="dd.MM.yyyy"/>
+         </h:outputText>
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.sandwichPriceLabel}</f:facet>
+        #{item.price}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.sandwichBreadColorLabel}</f:facet>
+        #{item.breadColor}
+      </h:column>
+      
+      <h:column>
+       <f:facet name="header">#{msg.sandwichVegetarianLabel}</f:facet>
+       #{item.vegetarian}
+      </h:column>
+
+				<h:column>
+					<f:facet name="header">#{msg.action}</f:facet>
+					<h:commandLink value="#{msg.actionDelete}"
+						action="#{sandwichBean.deleteSandwich}"/>
+					<h:commandLink value=" Details " action="#{sandwichBean.showDetails}"/>
+				</h:column>
+
+			</rich:dataTable>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
