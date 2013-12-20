@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This very short note is about how to:
 
 * start HSQLDB (TCP server, in memory mode) and its simple GUI client  
@@ -54,3 +55,7 @@ Find `<resource>` element. Copy&Paste following xml fragment next to any other `
 ## Don't hesitate deploy & run project
 1. `./scripts/buildRedeploy.sh`
 * `http://localhost:4848/jeedemo` 
+=======
+JEE
+===
+>>>>>>> 9dd7558a8070a5b1b89dbdc018b1c129dcdabd83
