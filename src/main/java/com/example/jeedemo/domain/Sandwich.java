@@ -35,7 +35,7 @@ public class Sandwich {
     private boolean vegetarian;
     private String breadColor;
 
-	private List<Car> cars = new ArrayList<Car>();
+	private List<Seller> sellers = new ArrayList<Seller>();
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -97,10 +97,10 @@ public class Sandwich {
 
 	// Be careful here, both with lazy and eager fetch type
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	public List<Car> getCars() {
-		return cars;
+	public List<Seller> getSellers() {
+		return sellers;
 	}
-	public void setCars(List<Car> cars) {
-		this.cars = cars;
+	public void setSellers(List<Seller> sellers) {
+		this.sellers = sellers;
 	}
 }
