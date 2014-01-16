@@ -7,7 +7,10 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+<<<<<<< HEAD
 import com.example.jeedemo.domain.Baker;
+=======
+>>>>>>> c8f944735c8885c53dfbc33f62636dba43e98556
 import com.example.jeedemo.domain.Seller;
 import com.example.jeedemo.domain.Sandwich;
 import com.example.jeedemo.domain.Ingredient;
@@ -56,9 +59,18 @@ public class SandwichManager {
             em.merge(sandwichToChange);
     }
 
+<<<<<<< HEAD
 	 @SuppressWarnings("unchecked")
 	public List<Sandwich> findSandwichByName(String name) {
              return em.createNamedQuery("sandwich.findByName").setParameter("name", name ).getResultList();
      }
+=======
+	public List<Seller> getOwnedSellers(Sandwich sandwich) {
+		sandwich = em.find(Sandwich.class, sandwich.getId());
+		// lazy loading here - try this code without this (shallow) copying
+		List<Seller> sellers = new ArrayList<Seller>(sandwich.getSellers());
+		return sellers;
+	}
+>>>>>>> c8f944735c8885c53dfbc33f62636dba43e98556
 
 }

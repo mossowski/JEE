@@ -38,6 +38,7 @@ public class Sandwich {
     private boolean vegetarian;
     private String breadColor;
 
+<<<<<<< HEAD
     private List<Ingredient> ingredients = new ArrayList<Ingredient>();
 	private Seller seller;
 	private Baker baker;
@@ -55,6 +56,9 @@ public class Sandwich {
 		this.vegetarian = vegetarian;
 		this.breadColor = breadColor;
 	}
+=======
+	private List<Seller> sellers = new ArrayList<Seller>();
+>>>>>>> c8f944735c8885c53dfbc33f62636dba43e98556
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -119,6 +123,7 @@ public class Sandwich {
             this.breadColor = breadColor;
     }
 
+<<<<<<< HEAD
 	@ManyToMany
 	public List<Ingredient> getIngredients() {
 		return ingredients;
@@ -134,6 +139,15 @@ public class Sandwich {
 	}
 	public void setSeller(Seller seller) {
 		this.seller = seller;
+=======
+	// Be careful here, both with lazy and eager fetch type
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	public List<Seller> getSellers() {
+		return sellers;
+	}
+	public void setSellers(List<Seller> sellers) {
+		this.sellers = sellers;
+>>>>>>> c8f944735c8885c53dfbc33f62636dba43e98556
 	}
 	
 	@OneToOne(optional=false)
