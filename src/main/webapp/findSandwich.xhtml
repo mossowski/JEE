@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="content">
+	
+	    <h:form>
+		    <h:inputText id="findName" value="#{sandwichBean.findName}" required="#{true}" />
+	    </h:form>
+	    
+		<h:form>
+			<rich:dataTable id="table" value="#{sandwichBean.findName}"
+				var="item" styleClass="table" headerClass="header">
+				<f:facet name="header">#{msg.sellerAllLabel}</f:facet>
+
+				<h:column>
+					<f:facet name="header">${msg.sandwichIdLabel}</f:facet>
+                    #{item.Id}
+                </h:column>
+
+				<h:column>
+					<f:facet name="header">${msg.sandwichNameLabel}</f:facet>
+                    #{item.name}
+                </h:column>
+
+				<h:column>
+					<f:facet name="header">#{msg.sandwichProductionDateLabel}</f:facet>
+
+					<h:outputText value="#{sandwichBean.productionDate}">
+						<f:convertDateTime pattern="dd-MM-yyyy" />
+					</h:outputText>
+
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">${msg.sandwichPriceLabel}</f:facet>
+                                                #{item.price}
+                </h:column>
+
+				<h:column>
+					<f:facet name="header">${msg.sandwichAmountLabel}</f:facet>
+                                                #{item.amount}
+                                        </h:column>
+
+				<h:column>
+					<f:facet name="header">${msg.sandwichBakerFirstNameLabel}</f:facet>
+                                                #{item.baker.firstName}
+                                        </h:column>
+
+				<h:column>
+					<f:facet name="header">${msg.sandwichIngredientNameLabel}</f:facet>
+					<ui:repeat var="ingredient" value="#{sandwichBean.ingredientId}">
+						<h:outputText value="${ingredient.name}, " />
+					</ui:repeat>
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">${msg.sandwichSellerFirstNameLabel}</f:facet>
+                                                #{item.seller.firstName}
+                                        </h:column>
+				
+			</rich:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

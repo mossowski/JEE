@@ -7,7 +7,7 @@
 	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich">
 
-	 <ui:define name="content">
+ <ui:define name="content">
         
    <h:form>
     
@@ -51,17 +51,42 @@
        <f:facet name="header">#{msg.sandwichVegetarianLabel}</f:facet>
        #{item.vegetarian}
       </h:column>
+      
+      <h:column>
+       <f:facet name="header">#{msg.sandwichSellerFirstNameLabel}</f:facet>
+       #{item.seller.firstName}
+      </h:column>
+      
+      <h:column>
+       <f:facet name="header">#{msg.sandwichSellerLastNameLabel}</f:facet>
+       #{item.seller.lastName}
+      </h:column>
+      
+      <h:column>
+       <f:facet name="header">#{msg.sandwichBakerFirstNameLabel}</f:facet>
+       #{item.baker.firstName}
+      </h:column>
+      
+      <h:column>
+       <f:facet name="header">#{msg.sandwichBakerLastNameLabel}</f:facet>
+       #{item.baker.lastName}
+      </h:column>
+      
+      <h:column>
+       <f:facet name="header">#{msg.sandwichIngredientNameLabel}</f:facet>
+       <ui:repeat var="ingredient" value="#{item.ingredients}">
+          <h:outputText value="${ingredient.name}, "/>
+       </ui:repeat>
+      </h:column>
 
-				<h:column>
-					<f:facet name="header">#{msg.action}</f:facet>
-					<h:commandLink value="#{msg.actionDelete}"
-						action="#{sandwichBean.deleteSandwich}"/>
-					<h:commandLink value=" Details " action="#{sandwichBean.showDetails}"/>
-				</h:column>
+	  <h:column>
+	    <f:facet name="header">#{msg.action}</f:facet>
+		<h:commandLink value="#{msg.actionDelete}"
+				action="#{sandwichBean.deleteSandwich}"/>
+	  </h:column>
 
-			</rich:dataTable>
-		</h:form>
-
-	</ui:define>
+	  </rich:dataTable>
+	</h:form>
+  </ui:define>
 
 </ui:composition>

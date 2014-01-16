@@ -6,13 +6,15 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Max;
@@ -22,26 +24,44 @@ import javax.validation.constraints.Size;
 
 @Entity
 @NamedQueries({ 
-	@NamedQuery(name = "sandwich.all", query = "Select s from Sandwich s")
+	@NamedQuery(name = "sandwich.all", query = "Select s from Sandwich s"),
+	@NamedQuery(name = "sandwich.findByName", query = "Select s from Sandwich s where s.name LIKE :name")
 })
 public class Sandwich {
 
 	private Long id;
 
-	private String name = "";
+	private String name;
     private int amount;
     private Date productionDate;
     private double price;
     private boolean vegetarian;
     private String breadColor;
 
-	private List<Car> cars = new ArrayList<Car>();
+    private List<Ingredient> ingredients = new ArrayList<Ingredient>();
+	private Seller seller;
+	private Baker baker;
+	
+	public Sandwich() {
+		
+	}
+	
+	public Sandwich(String name, int amount, Date productionDate, double price, boolean vegetarian, String breadColor) {
+		super();
+		this.name = name;
+		this.amount = amount;
+		this.productionDate = productionDate;
+		this.price = price;
+		this.vegetarian = vegetarian;
+		this.breadColor = breadColor;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -59,6 +79,7 @@ public class Sandwich {
     public int getAmount() {
             return amount;
     }
+    
     public void setAmount(int amount) {
             this.amount = amount;
     }
@@ -67,16 +88,18 @@ public class Sandwich {
     public double getPrice() {
             return price;
     }
+    
     public void setPrice(double price) {
             this.price = price;
     }
+    
     public boolean getVegetarian() {
             return vegetarian;
     }
+    
     public void setVegetarian(boolean vegetarian) {
             this.vegetarian = vegetarian;
     }
-
 
 	@Temporal(TemporalType.DATE)
 	public Date getProductionDate() {
@@ -91,16 +114,36 @@ public class Sandwich {
     public String getBreadColor() {
             return breadColor;
     }
+    
     public void setBreadColor(String breadColor) {
             this.breadColor = breadColor;
     }
 
-	// Be careful here, both with lazy and eager fetch type
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	public List<Car> getCars() {
-		return cars;
+	@ManyToMany
+	public List<Ingredient> getIngredients() {
+		return ingredients;
 	}
-	public void setCars(List<Car> cars) {
-		this.cars = cars;
+	
+	public void setIngredients(List<Ingredient> ingredients) {
+		this.ingredients = ingredients;
 	}
+	
+	@ManyToOne(cascade = { CascadeType.DETACH })
+	public Seller getSeller() {
+		return seller;
+	}
+	public void setSeller(Seller seller) {
+		this.seller = seller;
+	}
+	
+	@OneToOne(optional=false)
+    @JoinColumn(
+      name="bakerId", unique=true, nullable=false, updatable=false)
+        public Baker getBaker() {
+                return baker;
+        }
+
+        public void setBaker(Baker baker) {
+                this.baker = baker;
+        }
 }

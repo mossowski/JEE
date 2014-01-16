@@ -7,10 +7,8 @@ import javax.faces.model.ListDataModel;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.example.jeedemo.domain.Car;
 import com.example.jeedemo.domain.Sandwich;
 import com.example.jeedemo.service.SandwichManager;
-import com.example.jeedemo.service.SellingManager;
 
 @SessionScoped
 @Named("sandwichBean")
@@ -19,18 +17,40 @@ public class SandwichFormBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Sandwich sandwich = new Sandwich();
+	private Long sellerId;
+	private Long[] ingredientId = new Long[1];
+	private Long bakerId;
+	private String findName;
+	
 	private ListDataModel<Sandwich> sandwiches = new ListDataModel<Sandwich>();
 	
-	private Sandwich sandwichToShow = new Sandwich();
-	private ListDataModel<Car> ownedCars = new ListDataModel<Car>();
-
-
-	@Inject
-	private SandwichManager pm;
+	public Long[] getIngredientId() {
+		return ingredientId;
+	}
 	
-	@Inject
-	private SellingManager sm;
+	public void setIngredientId(Long[] ingredientId) {
+		this.ingredientId = ingredientId;
+	}
+	
+	public Long getSellerId() {
+        return sellerId;
+    }
 
+    public void setSellerId(Long sellerId) {
+        this.sellerId = sellerId;
+    }
+    
+    public Long getBakerId() {
+        return bakerId;
+    }
+
+    public void setBakerId(Long bakerId) {
+        this.bakerId = bakerId;
+    }
+		
+	@Inject
+	private SandwichManager sm;
+		
 	public Sandwich getSandwich() {
 		return sandwich;
 	}
@@ -38,37 +58,39 @@ public class SandwichFormBean implements Serializable {
 		this.sandwich = sandwich;
 	}
 	
+	public String getFindName() {
+        return findName;
+    }
+
+    public void setFindName(String findName) {
+        this.findName = findName;
+    }
+	
 	public ListDataModel<Sandwich> getAllSandwiches() {
-		sandwiches.setWrappedData(pm.getAllSandwiches());
+		sandwiches.setWrappedData(sm.getAllSandwiches());
 		return sandwiches;
 	}
 
-	public ListDataModel<Car> getOwnedCars() {
-		ownedCars.setWrappedData(pm.getOwnedCars(sandwichToShow));
-		return ownedCars;
-	}
-	
 	// Actions
 	public String addSandwich() {
-		pm.addSandwich(sandwich);
+		sm.addSandwich(sandwich, sellerId, ingredientId, bakerId);
 		return "showSandwiches";
 		//return null;
 	}
 
 	public String deleteSandwich() {
 		Sandwich sandwichToDelete = sandwiches.getRowData();
-		pm.deleteSandwich(sandwichToDelete);
+		sm.deleteSandwich(sandwichToDelete);
 		return null;
 	}
 	
-	public String showDetails() {
-		sandwichToShow = sandwiches.getRowData();
-		return "details";
+	public String editSandwich() {
+		sm.editSandwich(sandwich);
+		return null;
 	}
 	
-	public String disposeCar(){
-		Car carToDispose = ownedCars.getRowData();
-		sm.disposeCar(sandwichToShow, carToDispose);
-		return null;
+	public ListDataModel<Sandwich> findSandwichByName() {
+		sandwiches.setWrappedData(sm.findSandwichByName(findName));
+		return sandwiches;
 	}
 }

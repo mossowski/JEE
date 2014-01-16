@@ -1,3 +1,3 @@
-INSERT INTO person(firstName, pin, registrationDate) VALUES ('Bolek', '1234', '2012-01-10')
+INSERT INTO sandwich(name, amount, productionDate, price, vegetarian, breadColor) VALUES ('Kanapka_z_szynka',5, '2012-01-10',11,false,'jasne')
 
-INSERT INTO car(make, model, sold) VALUES ('Fiat', 'Bravo', false)
+INSERT INTO seller(firstName, lastName, removed) VALUES ('Marcin', 'Ossowski', false)

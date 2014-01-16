@@ -8,25 +8,25 @@
 	xmlns:rich="http://richfaces.org/rich">
 
 	<ui:define name="content">
-		<h:form id="personForm">
+		<h:form id="sandwichForm">
 			<h:panelGrid columns="2">
 
-				<h:outputText value=" Person " />
-				<h:selectOneMenu value="#{saleBean.personId}">
-					<f:selectItems value="#{saleBean.allPersons}" var="person"
-						itemValue="#{person.id}" itemLabel="#{person.firstName}" />
+				<h:outputText value=" Sandwich " />
+				<h:selectOneMenu value="#{saleBean.sandwichId}">
+					<f:selectItems value="#{saleBean.allSandwiches}" var="sandwich"
+						itemValue="#{sandwich.id}" itemLabel="#{sandwich.name}" />
 				</h:selectOneMenu>
 
-				<h:outputText value=" Car" />
-				<h:selectOneMenu value="#{saleBean.carId}">
-					<f:selectItems value="#{saleBean.availableCars}" var="car"
-						itemValue="#{car.id}" itemLabel="#{car.make} #{car.model}" />
+				<h:outputText value=" Seller " />
+				<h:selectOneMenu value="#{saleBean.sellerId}">
+					<f:selectItems value="#{saleBean.availableSellers}" var="seller"
+						itemValue="#{seller.id}" itemLabel="#{seller.firstName} #{seller.lastName}" />
 				</h:selectOneMenu>
 
 
 			</h:panelGrid>
 
-			<h:commandButton value="Sell" action="#{saleBean.sellCar}" />
+			<h:commandButton value="Remove" action="#{saleBean.removeSeller}" />
 
 			<h:panelGrid>
 				<h:messages id="messages" showDetail="#{true}"

@@ -6,20 +6,57 @@
   <div>
 	<h:form>
 	  <ul>
-		<li>
+		        <li>
                   <h:commandLink action="home?faces-redirect=true">
                         <h:outputText value="#{msg.linkHome}" />
                   </h:commandLink>
                 </li>
                 <li>
-                  <h:commandLink action="add?faces-redirect=true">
+                  <h:commandLink action="addSandwich?faces-redirect=true">
                         <h:outputText value="#{msg.sandwichAddLabel}" />
-                  </h:commandLink></li>
+                  </h:commandLink>
+                </li>
                 <li>
+                  <h:commandLink action="addSeller?faces-redirect=true">
+                        <h:outputText value="#{msg.sellerAddLabel}" />
+                  </h:commandLink>
+               </li>
+               <li>
+                  <h:commandLink action="addIngredient?faces-redirect=true">
+                        <h:outputText value="#{msg.ingredientAddLabel}" />
+                  </h:commandLink>
+               </li>
+               <li>
+                  <h:commandLink action="addBaker?faces-redirect=true">
+                        <h:outputText value="#{msg.bakerAddLabel}" />
+                  </h:commandLink>
+               </li>
+               <li>
                   <h:commandLink action="showSandwiches?faces-redirect=true">
                          <h:outputText value="#{msg.sandwichAllLabel}" />
                   </h:commandLink>
-                </li>
+               </li>
+               <li>
+                  <h:commandLink action="showSellers?faces-redirect=true">
+                         <h:outputText value="#{msg.sellerAllLabel}" />
+                  </h:commandLink>
+               </li>
+               <li>
+                  <h:commandLink action="showIngredients?faces-redirect=true">
+                         <h:outputText value="#{msg.ingredientAllLabel}" />
+                  </h:commandLink>
+               </li>
+               <li>
+                  <h:commandLink action="showBakers?faces-redirect=true">
+                         <h:outputText value="#{msg.bakerAllLabel}" />
+                  </h:commandLink>
+               </li>
+               <li>
+                  <h:commandLink action="findSandwich?faces-redirect=true">
+                         <h:outputText value="#{msg.sandwichFindLabel}" />
+                  </h:commandLink>
+               </li>
+                
 	</ul>
    </h:form>
   </div>

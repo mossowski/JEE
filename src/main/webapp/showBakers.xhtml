@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+ <ui:define name="content">
+        
+   <h:form>
+    
+     <rich:dataTable id="table" value="#{bakerBean.allBakers}" var="item" 
+     styleClass="table" headerClass="header">
+     <f:facet name="header">#{msg.bakerAllLabel}</f:facet>
+      
+      <h:column>
+        <f:facet name="header">#{msg.bakerIdLabel}</f:facet>
+        #{item.id}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.bakerFirstNameLabel}</f:facet>
+        #{item.firstName}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.bakerLastNameLabel}</f:facet>
+        #{item.lastName}
+      </h:column>
+          
+	  <h:column>
+	    <f:facet name="header">#{msg.action}</f:facet>
+		<h:commandLink value="#{msg.actionDelete}"
+				action="#{bakerBean.deleteBaker}"/>
+	  </h:column>
+
+	  </rich:dataTable>
+	</h:form>
+  </ui:define>
+
+</ui:composition>
