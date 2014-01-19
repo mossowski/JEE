@@ -7,16 +7,13 @@ import javax.faces.model.ListDataModel;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-<<<<<<< HEAD
-=======
-import com.example.jeedemo.domain.Seller;
->>>>>>> c8f944735c8885c53dfbc33f62636dba43e98556
 import com.example.jeedemo.domain.Sandwich;
 import com.example.jeedemo.service.SandwichManager;
 
 @SessionScoped
 @Named("sandwichBean")
-public class SandwichFormBean implements Serializable {
+public class SandwichFormBean implements Serializable 
+{
 
 	private static final long serialVersionUID = 1L;
 
@@ -28,93 +25,95 @@ public class SandwichFormBean implements Serializable {
 	
 	private ListDataModel<Sandwich> sandwiches = new ListDataModel<Sandwich>();
 	
-<<<<<<< HEAD
-	public Long[] getIngredientId() {
+    public Long[] getIngredientId() 
+    {
 		return ingredientId;
 	}
 	
-	public void setIngredientId(Long[] ingredientId) {
+	public void setIngredientId(Long[] ingredientId) 
+	{
 		this.ingredientId = ingredientId;
 	}
 	
-	public Long getSellerId() {
+	public Long getSellerId() 
+	{
         return sellerId;
     }
-=======
-	private Sandwich sandwichToShow = new Sandwich();
-	private ListDataModel<Seller> ownedSellers = new ListDataModel<Seller>();
->>>>>>> c8f944735c8885c53dfbc33f62636dba43e98556
-
-    public void setSellerId(Long sellerId) {
+		
+    public void setSellerId(Long sellerId) 
+    {
         this.sellerId = sellerId;
     }
     
-    public Long getBakerId() {
+    public Long getBakerId() 
+    {
         return bakerId;
     }
 
-    public void setBakerId(Long bakerId) {
+    public void setBakerId(Long bakerId) 
+    {
         this.bakerId = bakerId;
     }
 		
 	@Inject
 	private SandwichManager sm;
 		
-	public Sandwich getSandwich() {
+	public Sandwich getSandwich() 
+	{
 		return sandwich;
 	}
-	public void setSandwich(Sandwich sandwich) {
+	
+	public void setSandwich(Sandwich sandwich) 
+	{
 		this.sandwich = sandwich;
 	}
 	
-	public String getFindName() {
+	public String getFindName() 
+	{
         return findName;
     }
 
-    public void setFindName(String findName) {
+    public void setFindName(String findName) 
+    {
         this.findName = findName;
     }
 	
-	public ListDataModel<Sandwich> getAllSandwiches() {
+	public ListDataModel<Sandwich> getAllSandwiches() 
+	{
 		sandwiches.setWrappedData(sm.getAllSandwiches());
 		return sandwiches;
 	}
-
-<<<<<<< HEAD
-=======
-	public ListDataModel<Seller> getOwnedSellers() {
-		ownedSellers.setWrappedData(pm.getOwnedSellers(sandwichToShow));
-		return ownedSellers;
-	}
-	
->>>>>>> c8f944735c8885c53dfbc33f62636dba43e98556
-	// Actions
-	public String addSandwich() {
-		sm.addSandwich(sandwich, sellerId, ingredientId, bakerId);
+    	
+    // Actions
+	public String addSandwich() 
+	{
+		sm.addSandwich(sandwich, sellerId, bakerId, ingredientId);
 		return "showSandwiches";
 		//return null;
 	}
 
-	public String deleteSandwich() {
+	public String deleteSandwich() 
+	{
 		Sandwich sandwichToDelete = sandwiches.getRowData();
 		sm.deleteSandwich(sandwichToDelete);
 		return null;
 	}
 	
-	public String editSandwich() {
-		sm.editSandwich(sandwich);
+	public String editSandwich() 
+	{
+		sm.editSandwich(sandwich, sellerId, bakerId, ingredientId);
 		return null;
 	}
 	
-<<<<<<< HEAD
-	public ListDataModel<Sandwich> findSandwichByName() {
-		sandwiches.setWrappedData(sm.findSandwichByName(findName));
+	public String makeEdit()
+    {
+            sandwich = sandwiches.getRowData();
+            return "editSandwich";
+    }
+	
+    public ListDataModel<Sandwich> getSandwichByName() 
+    {
+		sandwiches.setWrappedData(sm.getSandwichByName(findName));
 		return sandwiches;
-=======
-	public String disposeSeller(){
-		Seller sellerToDispose = ownedSellers.getRowData();
-		sm.disposeSeller(sandwichToShow, sellerToDispose);
-		return null;
->>>>>>> c8f944735c8885c53dfbc33f62636dba43e98556
-	}
+    }	
 }

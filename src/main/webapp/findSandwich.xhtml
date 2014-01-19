@@ -10,18 +10,14 @@
 	<ui:define name="content">
 	
 	    <h:form>
+	        <h:outputText value="#{msg.sandwichFindByNameLabel}  "/>
 		    <h:inputText id="findName" value="#{sandwichBean.findName}" required="#{true}" />
 	    </h:form>
-	    
+	    <br/>
 		<h:form>
-			<rich:dataTable id="table" value="#{sandwichBean.findName}"
+			<rich:dataTable id="table" value="#{sandwichBean.sandwichByName}"
 				var="item" styleClass="table" headerClass="header">
 				<f:facet name="header">#{msg.sellerAllLabel}</f:facet>
-
-				<h:column>
-					<f:facet name="header">${msg.sandwichIdLabel}</f:facet>
-                    #{item.Id}
-                </h:column>
 
 				<h:column>
 					<f:facet name="header">${msg.sandwichNameLabel}</f:facet>
@@ -30,42 +26,51 @@
 
 				<h:column>
 					<f:facet name="header">#{msg.sandwichProductionDateLabel}</f:facet>
-
-					<h:outputText value="#{sandwichBean.productionDate}">
+                    <h:outputText value="#{item.productionDate}">
 						<f:convertDateTime pattern="dd-MM-yyyy" />
 					</h:outputText>
-
 				</h:column>
 
 				<h:column>
 					<f:facet name="header">${msg.sandwichPriceLabel}</f:facet>
-                                                #{item.price}
+                    #{item.price}
                 </h:column>
 
 				<h:column>
 					<f:facet name="header">${msg.sandwichAmountLabel}</f:facet>
-                                                #{item.amount}
-                                        </h:column>
+                    #{item.amount}
+                </h:column>
 
 				<h:column>
-					<f:facet name="header">${msg.sandwichBakerFirstNameLabel}</f:facet>
-                                                #{item.baker.firstName}
-                                        </h:column>
+					<f:facet name="header">${msg.sandwichBakerLabel}</f:facet>
+                    #{item.baker.firstName} #{item.baker.lastName}
+                </h:column>
+                
+                <h:column>
+					<f:facet name="header">${msg.sandwichSellerLabel}</f:facet>
+                    #{item.seller.firstName} #{item.seller.lastName}
+                </h:column>
 
 				<h:column>
 					<f:facet name="header">${msg.sandwichIngredientNameLabel}</f:facet>
-					<ui:repeat var="ingredient" value="#{sandwichBean.ingredientId}">
+					<ui:repeat var="ingredient" value="#{item.ingredients}">
 						<h:outputText value="${ingredient.name}, " />
 					</ui:repeat>
 				</h:column>
-
-				<h:column>
-					<f:facet name="header">${msg.sandwichSellerFirstNameLabel}</f:facet>
-                                                #{item.seller.firstName}
-                                        </h:column>
+		                          
+                <h:column>
+	                <f:facet name="header">#{msg.action}</f:facet>
+		            <h:commandLink value="#{msg.actionEdit}"
+				        action="#{sandwichBean.makeEdit}"/>
+	            </h:column>
+	  
+	            <h:column>
+	                <f:facet name="header">#{msg.action}</f:facet>
+		            <h:commandLink value="#{msg.actionDelete}"
+				        action="#{sandwichBean.deleteSandwich}"/>
+	            </h:column>
 				
 			</rich:dataTable>
 		</h:form>
 	</ui:define>
-
 </ui:composition>

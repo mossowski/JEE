@@ -10,10 +10,10 @@ import javax.inject.Named;
 import com.example.jeedemo.domain.Baker;
 import com.example.jeedemo.service.BakerManager;
 
-
 @SessionScoped
 @Named("bakerBean")
-public class BakerFromBean implements Serializable {
+public class BakerFromBean implements Serializable 
+{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -24,34 +24,38 @@ public class BakerFromBean implements Serializable {
 	@Inject
 	private BakerManager bm;
 	
-	public Baker getBaker() {
+	public Baker getBaker() 
+	{
 		return baker;
 	}
 	
-	public void setBaker(Baker baker) {
+	public void setBaker(Baker baker) 
+	{
 		this.baker = baker;
 	}
 	
-	public ListDataModel<Baker> getAllBakers() {
+	public ListDataModel<Baker> getAllBakers() 
+	{
         bakers.setWrappedData(bm.getAllBakers());
         return bakers;
     }
 
-    // Actions
-
-    public String addBaker() {
+    public String addBaker() 
+    {
         bm.addBaker(baker);
         //return "list";
         return null;
     }
     
-    public String deleteBaker() {
+    public String deleteBaker() 
+    {
     	Baker bakerToDelete = bakers.getRowData();
 		bm.deleteBaker(bakerToDelete);
 		return null;
 	}
     
-    public String editBaker() {
+    public String editBaker() 
+    {
 		bm.editBaker(baker);
 		return null;
 	}

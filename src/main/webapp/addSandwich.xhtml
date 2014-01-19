@@ -7,92 +7,82 @@
 	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich">
 
-	 <ui:define name="content">
-      <h:form id="sandwichForm">
-        <rich:panel header="#{msg.sandwichAddSandwichLabel}">
-                  <h:panelGrid columns="3">
+	<ui:define name="content">
+        <h:form id="sandwichForm">
+            <rich:panel header="#{msg.sandwichAddSandwichLabel}">           
+                <h:panelGrid columns="3">
                       
-
                     <h:outputText value="#{msg.sandwichNameLabel}"/>
-                        <h:inputText id="name" value="#{sandwichBean.sandwich.name}" required="#{true}">
-                          <f:validateLength minimum="3" maximum="25"/>
-                          <rich:validator/>
-                          <a4j:ajax render="messages" execute="@this" event="keyup"/>
-                        </h:inputText>
-                        <rich:message for="name"/>
+                    <h:inputText id="name" value="#{sandwichBean.sandwich.name}" required="#{true}">
+                        <f:validateLength minimum="3" maximum="25"/>
+                        <rich:validator/>
+                        <a4j:ajax render="messages" execute="@this" event="keyup"/>
+                    </h:inputText>
+                    <rich:message for="name"/>
                                                      
-                        <h:outputText value="#{msg.sandwichAmountLabel}"/>
-                        <h:inputText id="amount" value="#{sandwichBean.sandwich.amount}">
-                          <f:validateLongRange minimum="1" maximum="250"/>
-                          <rich:validator/>
-                          <a4j:ajax render="messages" execute="@this" event="keyup"/>
-                        </h:inputText>
-                        <rich:message for="amount"/>
+                    <h:outputText value="#{msg.sandwichAmountLabel}"/>
+                    <h:inputText id="amount" value="#{sandwichBean.sandwich.amount}">
+                        <f:validateLongRange minimum="1" maximum="250"/>
+                        <rich:validator/>
+                        <a4j:ajax render="messages" execute="@this" event="keyup"/>
+                    </h:inputText>
+                    <rich:message for="amount"/>
                                 
-                        <h:outputText value="#{msg.sandwichProductionDateLabel}"/>
-                        <rich:calendar value="#{sandwichBean.sandwich.productionDate}"
-              id="calendar" datePattern="dd.MM.yyyy" showApplyButton="#{true}"
-              cellWidth="24px" cellHeight="22px" style="width:200px">
-              <rich:validator/>
-            </rich:calendar>
+                    <h:outputText value="#{msg.sandwichProductionDateLabel}"/>
+                    <rich:calendar value="#{sandwichBean.sandwich.productionDate}"
+                        id="calendar" datePattern="dd.MM.yyyy" showApplyButton="#{true}"
+                        cellWidth="24px" cellHeight="22px" style="width:200px">
+                        <rich:validator/>
+                    </rich:calendar>
                     <rich:message for="calendar"/>
                                 
-                        <h:outputText value="#{msg.sandwichPriceLabel}"/>
-                        <h:inputText id="price" value="#{sandwichBean.sandwich.price}">
-                          <f:validateDoubleRange minimum="1" maximum="10"/>
-                          <rich:validator/>
-                          <a4j:ajax render="messages" execute="@this" event="keyup"/>
-                        </h:inputText>
-                        <rich:message for="price"/>        
+                    <h:outputText value="#{msg.sandwichPriceLabel}"/>
+                    <h:inputText id="price" value="#{sandwichBean.sandwich.price}">
+                        <f:validateDoubleRange minimum="1" maximum="10"/>
+                        <rich:validator/>
+                        <a4j:ajax render="messages" execute="@this" event="keyup"/>
+                    </h:inputText>
+                    <rich:message for="price"/>        
                                 
-                        <h:outputText value="#{msg.sandwichBreadColorLabel}"/>
-                        <rich:select value="#{sandwichBean.sandwich.breadColor}" selectFirstOnUpdate="false" 
-                          defaultLabel="Enter some value">
-                          <f:selectItem itemValue="#{msg.sandwichBreadColorD}" itemLabel="#{msg.sandwichBreadColorD}"/>
-                          <f:selectItem itemValue="#{msg.sandwichBreadColorL}" itemLabel="#{msg.sandwichBreadColorL}"/>
-                          <rich:validator/>
-                        </rich:select> 
-                        <rich:message for="breadColor"/>        
+                    <h:outputText value="#{msg.sandwichBreadColorLabel}"/>
+                    <rich:select value="#{sandwichBean.sandwich.breadColor}" selectFirstOnUpdate="false" 
+                        defaultLabel="Enter some value">
+                        <f:selectItem itemValue="#{msg.sandwichBreadColorD}" itemLabel="#{msg.sandwichBreadColorD}"/>
+                        <f:selectItem itemValue="#{msg.sandwichBreadColorL}" itemLabel="#{msg.sandwichBreadColorL}"/>
+                        <rich:validator/>
+                    </rich:select> 
+                    <rich:message for="breadColor"/>        
                                 
-                        <h:outputText value="#{msg.sandwichVegetarianLabel}"/>
-                        <h:selectBooleanCheckbox value="#{sandwichBean.sandwich.vegetarian}"/> 
-                        <rich:message for="vegetarian"/>  
+                    <h:outputText value="#{msg.sandwichVegetarianLabel}"/>
+                    <h:selectBooleanCheckbox value="#{sandwichBean.sandwich.vegetarian}"/> 
+                    <rich:message for="vegetarian"/>  
                           
-                        <h:outputText value="#{msg.sandwichSellerLabel}" />
-                                  <h:selectOneMenu value="#{sandwichBean.sellerId}">
-                                        <f:selectItems value="#{sellerBean.allSellers}" var="seller" 
-                                        itemValue="#{seller.id}" converter="javax.faces.Long" itemLabel="#{seller.firstName}"  />
-                                  </h:selectOneMenu>
-                        <rich:message for="sellerId"/>
+                    <h:outputText value="#{msg.sandwichSellerLabel}" />
+                    <h:selectOneMenu value="#{sandwichBean.sellerId}">
+                        <f:selectItems value="#{sellerBean.allSellers}" var="seller" 
+                            itemValue="#{seller.id}" converter="javax.faces.Long" itemLabel="#{seller.firstName} #{seller.lastName}"  />
+                    </h:selectOneMenu>
+                    <rich:message for="sellerId"/>
                         
-                        <h:outputText value="#{msg.bakerName}" />
-                                                <h:selectOneMenu value="#{sandwichBean.bakerId}" >
-                                                        <f:selectItems value="#{bakerBean.allBakers}" var="baker"
-                                                                itemValue="#{baker.id}" converter="javax.faces.Long" itemLabel="#{baker.firstName}" />
-                                                
-                                                </h:selectOneMenu>
-                        <rich:message for="bakerId"/>                          
+                    <h:outputText value="#{msg.bakerName}" />
+                    <h:selectOneMenu value="#{sandwichBean.bakerId}" >
+                        <f:selectItems value="#{bakerBean.allBakers}" var="baker"
+                            itemValue="#{baker.id}" converter="javax.faces.Long" itemLabel="#{baker.firstName} #{baker.lastName}" />
+                    </h:selectOneMenu>
+                    <rich:message for="bakerId"/>                          
                                   
-                        <h:outputText value="#{msg.sandwichIngredientLabel}" />
-                                  <h:selectManyListbox value="#{sandwichBean.ingredientId}"  converter="javax.faces.Long">
-                                        <f:selectItems value="#{ingredientBean.allIngredients}" 
-                                        var="ingredient" itemValue="#{ingredient.id}" itemLabel="#{ingredient.name}" />
-                                  </h:selectManyListbox> 
-                        <rich:message for="ingredientId"/>
-                          
-                          
-                  </h:panelGrid>
+                    <h:outputText value="#{msg.sandwichIngredientLabel}" />
+                    <h:selectManyListbox value="#{sandwichBean.ingredientId}"  converter="javax.faces.Long">
+                        <f:selectItems value="#{ingredientBean.allIngredients}" 
+                        var="ingredient" itemValue="#{ingredient.id}" itemLabel="#{ingredient.name}" />
+                    </h:selectManyListbox> 
+                    <rich:message for="ingredientId"/>                                                 
+                </h:panelGrid>
 
 			<h:commandButton value="#{msg.sandwichFormAddButton}"
 				 action="#{sandwichBean.addSandwich}"/>
-
-			<h:panelGrid>
-				<h:messages for="" />
-				<h:messages id="messages" showDetail="#{true}"
-					showSummary="#{false}" />
-			</h:panelGrid>
-             </rich:panel>
-		</h:form>
-
-	</ui:define>
+			
+            </rich:panel>
+	    </h:form>
+    </ui:define>
 </ui:composition>

@@ -53,25 +53,15 @@
       </h:column>
       
       <h:column>
-       <f:facet name="header">#{msg.sandwichSellerFirstNameLabel}</f:facet>
-       #{item.seller.firstName}
+       <f:facet name="header">#{msg.sandwichSellerLabel}</f:facet>
+       #{item.seller.firstName} #{item.seller.lastName}
       </h:column>
-      
+           
       <h:column>
-       <f:facet name="header">#{msg.sandwichSellerLastNameLabel}</f:facet>
-       #{item.seller.lastName}
+       <f:facet name="header">#{msg.sandwichBakerLabel}</f:facet>
+       #{item.baker.firstName} #{item.baker.lastName}
       </h:column>
-      
-      <h:column>
-       <f:facet name="header">#{msg.sandwichBakerFirstNameLabel}</f:facet>
-       #{item.baker.firstName}
-      </h:column>
-      
-      <h:column>
-       <f:facet name="header">#{msg.sandwichBakerLastNameLabel}</f:facet>
-       #{item.baker.lastName}
-      </h:column>
-      
+              
       <h:column>
        <f:facet name="header">#{msg.sandwichIngredientNameLabel}</f:facet>
        <ui:repeat var="ingredient" value="#{item.ingredients}">
@@ -79,6 +69,12 @@
        </ui:repeat>
       </h:column>
 
+	  <h:column>
+	    <f:facet name="header">#{msg.action}</f:facet>
+		<h:commandLink value="#{msg.actionEdit}"
+				action="#{sandwichBean.makeEdit}"/>
+	  </h:column>
+	  
 	  <h:column>
 	    <f:facet name="header">#{msg.action}</f:facet>
 		<h:commandLink value="#{msg.actionDelete}"

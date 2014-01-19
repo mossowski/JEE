@@ -7,13 +7,11 @@
 	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich">
 
- <ui:define name="content">
-        
-   <h:form>
-    
-     <rich:dataTable id="table" value="#{ingredientBean.allIngredients}" var="item" 
-     styleClass="table" headerClass="header">
-     <f:facet name="header">#{msg.ingredientAllLabel}</f:facet>
+  <ui:define name="content">      
+    <h:form>   
+      <rich:dataTable id="table" value="#{ingredientBean.allIngredients}" var="item" 
+          styleClass="table" headerClass="header">
+      <f:facet name="header">#{msg.ingredientAllLabel}</f:facet>
       
       <h:column>
         <f:facet name="header">#{msg.ingredientIdLabel}</f:facet>
@@ -32,7 +30,6 @@
 	  </h:column>
 
 	  </rich:dataTable>
-	</h:form>
+    </h:form>
   </ui:define>
-
 </ui:composition>
