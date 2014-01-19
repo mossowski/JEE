@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 This very short note is about how to:
 
 * start HSQLDB (TCP server, in memory mode) and its simple GUI client  
@@ -43,24 +41,8 @@ Find `<resource>` element. Copy&Paste following xml fragment next to any other `
  * click: Resources/JDBC/JDBC Connection Pools
  * click: HSQLPool
  * try Ping, it must Succeed !
- 
-## Add Hibernate support to GlassFish
-
-* open web console `http://localhost:4848` 
-* click: Update Tool
-* find and select Hibertate in Available Add-Ons
-* click Install
-* restart GlassFish
-`asadmin restart-domain`
 
 ## Don't hesitate deploy & run project
 1. `./scripts/buildRedeploy.sh`
 * `http://localhost:4848/jeedemo` 
-=======
-JEE
-===
->>>>>>> 9dd7558a8070a5b1b89dbdc018b1c129dcdabd83
-=======
-JEE
-===
->>>>>>> 64462f468abc525540ed4f84f023590265f1c71f
+
