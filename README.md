@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 This very short note is about how to:
 
 * start HSQLDB (TCP server, in memory mode) and its simple GUI client  
@@ -59,3 +60,7 @@ Find `<resource>` element. Copy&Paste following xml fragment next to any other `
 JEE
 ===
 >>>>>>> 9dd7558a8070a5b1b89dbdc018b1c129dcdabd83
+=======
+JEE
+===
+>>>>>>> 64462f468abc525540ed4f84f023590265f1c71f
