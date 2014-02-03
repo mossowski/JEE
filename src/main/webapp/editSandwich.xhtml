@@ -61,14 +61,14 @@
                 <h:outputText value="#{msg.sandwichSellerLabel}" />
                 <h:selectOneMenu value="#{sandwichBean.sellerId}">
                     <f:selectItems value="#{sellerBean.allSellers}" var="seller" 
-                        itemValue="#{seller.id}" converter="javax.faces.Long" itemLabel="#{seller.firstName} #{seller.lastName}"  />
+                        itemValue="#{sandwichBean.sandwich.seller}" itemLabel="#{sandwichBean.sandwich.seller.firstName} #{sandwichBean.sandwich.seller.lastName}"  />
                 </h:selectOneMenu>
                 <rich:message for="sellerId"/>
                         
                 <h:outputText value="#{msg.bakerName}" />
                 <h:selectOneMenu value="#{sandwichBean.bakerId}" >
                     <f:selectItems value="#{bakerBean.allBakers}" var="baker"
-                        itemValue="#{baker.id}" converter="javax.faces.Long" itemLabel="#{baker.firstName} #{baker.lastName}" />                                               
+                        itemValue="#{sandwichBean.sandwich.baker}" itemLabel="#{sandwichBean.sandwich.baker.firstName} #{sandwichBean.sandwich.baker.lastName}" />                                               
                 </h:selectOneMenu>
                 <rich:message for="bakerId"/>                          
                                   

@@ -4,59 +4,55 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
   <div>
-	<h:form>
-	  <ul>
-		        <li>
-                  <h:commandLink action="home?faces-redirect=true">
+	<h:form>	  	       
+                  <h:commandLink action="home?faces-redirect=true" styleClass="commandLink">
                         <h:outputText value="#{msg.linkHome}" />
                   </h:commandLink>
-                </li>
-                <li>
-                  <h:commandLink action="addSandwich?faces-redirect=true">
+                  <br/>
+                  
+                  <h:commandLink action="addSandwich?faces-redirect=true" styleClass="commandLink">
                         <h:outputText value="#{msg.sandwichAddLabel}" />
                   </h:commandLink>
-                </li>
-                <li>
-                  <h:commandLink action="addSeller?faces-redirect=true">
+                  <br/>
+                  
+                  <h:commandLink action="addSeller?faces-redirect=true" styleClass="commandLink">
                         <h:outputText value="#{msg.sellerAddLabel}" />
                   </h:commandLink>
-               </li>
-               <li>
-                  <h:commandLink action="addIngredient?faces-redirect=true">
+                  <br/>
+                  
+                  <h:commandLink action="addIngredient?faces-redirect=true" styleClass="commandLink">
                         <h:outputText value="#{msg.ingredientAddLabel}" />
                   </h:commandLink>
-               </li>
-               <li>
-                  <h:commandLink action="addBaker?faces-redirect=true">
+                  <br/>
+                  
+                  <h:commandLink action="addBaker?faces-redirect=true" styleClass="commandLink">
                         <h:outputText value="#{msg.bakerAddLabel}" />
                   </h:commandLink>
-               </li>
-               <li>
-                  <h:commandLink action="showSandwiches?faces-redirect=true">
+                  <br/>
+                  
+                  <h:commandLink action="showSandwiches?faces-redirect=true" styleClass="commandLink">
                          <h:outputText value="#{msg.sandwichAllLabel}" />
                   </h:commandLink>
-               </li>
-               <li>
-                  <h:commandLink action="showSellers?faces-redirect=true">
+                  <br/>
+                  
+                  <h:commandLink action="showSellers?faces-redirect=true" styleClass="commandLink">
                          <h:outputText value="#{msg.sellerAllLabel}" />
                   </h:commandLink>
-               </li>
-               <li>
-                  <h:commandLink action="showIngredients?faces-redirect=true">
+                  <br/>
+                  
+                  <h:commandLink action="showIngredients?faces-redirect=true" styleClass="commandLink">
                          <h:outputText value="#{msg.ingredientAllLabel}" />
                   </h:commandLink>
-               </li>
-               <li>
-                  <h:commandLink action="showBakers?faces-redirect=true">
+                  <br/>
+                  
+                  <h:commandLink action="showBakers?faces-redirect=true" styleClass="commandLink">
                          <h:outputText value="#{msg.bakerAllLabel}" />
                   </h:commandLink>
-               </li>
-               <li>
-                  <h:commandLink action="findSandwich?faces-redirect=true">
+                  <br/>
+                  
+                  <h:commandLink action="findSandwich?faces-redirect=true" styleClass="commandLink">
                          <h:outputText value="#{msg.sandwichFindLabel}" />
-                  </h:commandLink>
-               </li>              
-	</ul>
+                  </h:commandLink>                        	              
    </h:form>
   </div>
 </ui:composition>
